@@ -5,6 +5,7 @@
 // This ensures the yt-dlp_linux binary is executable. If you're running this on a VPS, VDS, or similar, this is required.
 // If you are on a free/shared host, which uses Pterodactyl (for example), just make the .sh file and upload the yt-dlp_linux onto your File tab.
 // If the stdout says `stdout:`, with plain text, it will still work, since it managed to successfully chmod the .sh file!
+// NOTE: If your VPS is IPV6, it will attempt to convert it to IPV4 to prevent slowness.
 
 // Important Values - Fill In
 const token = "YOUR_TOKEN_HERE";
