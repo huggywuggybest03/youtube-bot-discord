@@ -5,7 +5,6 @@
 // Important Values - Fill In
 const token = "YOUR_TOKEN_HERE";
 
-// Code
 const { Client, GatewayIntentBits } = require("discord.js");
 const {
   joinVoiceChannel,
@@ -112,9 +111,11 @@ function playSong(guildId, textChannel) {
   if (!guildQueue || !guildQueue.songs.length) return;
 
   const url = guildQueue.songs[0];
+    
+  const ytDlpPath = "./yt-dlp.exe"; // Depends if you renamed the file.
 
   // Spawn yt-dlp with lower priority
-  const process = spawn("yt-dlp", [
+  const process = spawn(ytDlpPath, [
     "--no-part", // Prevents slow fragmented downloads
     "--force-ipv4", // Forces IPv4 (bypasses throttling)
     "--http-chunk-size", "10M", // Larger chunks to speed up the download
@@ -140,5 +141,4 @@ function playSong(guildId, textChannel) {
   process.stderr.on("data", (data) => console.error(`yt-dlp error: ${data}`));
 }
   
-
 client.login(token);
